@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { Package } from 'lucide-react';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { Package } from "lucide-react";
 
 const LoginPage: React.FC = () => {
-  const [username, setUsername] = useState('emilys');
-  const [password, setPassword] = useState('emilyspass');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("emilys");
+  const [password, setPassword] = useState("emilyspass");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
-      await login(username, password)
-      navigate('/products');
+      await login(username, password);
+      navigate("/products");
     } catch (err) {
-      setError('Invalid credentials. Try: emilys / emilyspass');
+      setError("Invalid credentials. Try: emilys / emilyspass");
     } finally {
       setLoading(false);
     }
@@ -75,17 +75,9 @@ const LoginPage: React.FC = () => {
             disabled={loading}
             className="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 disabled:opacity-50 transition"
           >
-            {loading ? 'Signing in...' : 'Sign In'}
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
-
-        <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-          <p className="text-sm text-gray-600 text-center">
-            Demo credentials:
-            <br />
-            <span className="font-mono font-semibold">emilys / emilyspass</span>
-          </p>
-        </div>
       </div>
     </div>
   );
