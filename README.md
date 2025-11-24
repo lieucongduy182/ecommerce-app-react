@@ -106,6 +106,7 @@ Use these credentials to login:
 - Different error types require different UI/UX responses
 - Avoiding code duplication in error handling logic
 - Providing meaningful error messages to users
+
 **Considerations:**
 - Should build reusable ErrorAlert component with message clearly
 - Design Error state (network, auth, server, validation) improves UX
@@ -114,6 +115,7 @@ Use these credentials to login:
 **Challenge:**
 - Managing global state (user, cart) across multiple pages
 - No Redux available in single-file artifact
+
 **Considerations:**
 - For larger apps: Consider React Query or React Toolkit
 - Re-renders optimization components
@@ -122,12 +124,14 @@ Use these credentials to login:
 **Challenge:**
 - Different validation rules for different field types
 - Maintaining validation state across multiple fields
+
 **Considerations:**
 - Clear error messages next to relevant fields
-- Should use `zod` to manage error state
+- Should use `zod` library to manage form and error state
 
 ### **Authentication**
 **Challenge:**
 - Store token in localStorage
+
 **Considerations:**
 - Security: Token in memory prevents XSS attacks on localStorage
