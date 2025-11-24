@@ -2,7 +2,7 @@
 
 A full-featured e-commerce application built with React and TypeScript, utilizing the DummyJSON API for backend services. 
 
-Deployment production URL: `https://ecommerce-app-react-phi.vercel.app`
+Deployment production URL: `https://ecommerce-app-react-demo.vercel.app/`
 
 ## Features
 
