@@ -20,12 +20,13 @@ export const useCart = () => {
   return context;
 };
 
-const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const CartProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [orderData, setOrderData] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  /** 1️⃣ Restore cart & orderData from localStorage */
   useEffect(() => {
     try {
       const savedCart = localStorage.getItem("cart");
@@ -40,26 +41,23 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     setIsLoading(false);
   }, []);
 
-  /** 2️⃣ Persist cart changes */
   useEffect(() => {
     if (!isLoading) {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
   }, [cart, isLoading]);
 
-  /** 3️⃣ Persist orderData changes */
   useEffect(() => {
     if (!isLoading) {
       localStorage.setItem("orderData", JSON.stringify(orderData));
     }
   }, [orderData, isLoading]);
 
-  /** Add item */
   const addToCart = (product: Product) => {
-    setCart(prev => {
-      const existing = prev.find(item => item.id === product.id);
+    setCart((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
       if (existing) {
-        return prev.map(item =>
+        return prev.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
@@ -69,32 +67,26 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     });
   };
 
-  /** Remove item */
   const removeFromCart = (id: number) => {
-    setCart(prev => prev.filter(item => item.id !== id));
+    setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  /** Update quantity */
   const updateQuantity = (id: number, quantity: number) => {
     if (quantity <= 0) {
       removeFromCart(id);
       return;
     }
-    setCart(prev =>
-      prev.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      )
+    setCart((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
     );
   };
 
-  /** Clear cart */
   const clearCart = () => {
     setCart([]);
     setOrderData(null);
     localStorage.removeItem("orderData");
   };
 
-  /** Derived values */
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,

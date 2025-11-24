@@ -23,11 +23,6 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, setUser] = useState<User | null>(() => {
     const saved = localStorage.getItem('user');
     if (!saved || saved === 'undefined' || saved === 'null') return null;
-    console.log(
-      '🚀 [Debug] ~ AuthContext.tsx:29 ~ AuthProvider ~ saved:',
-      saved,
-    );
-
     return JSON.parse(saved);
   });
   const [token, setToken] = useState<string | null>(null);
