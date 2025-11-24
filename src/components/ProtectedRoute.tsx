@@ -5,7 +5,6 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { user } = useAuth();
-  console.log('🚀 [Debug] ~ ProtectedRoute.tsx:8 ~ ProtectedRoute ~ user:', user)
   return user ? children : <Navigate to="/" />;
 };
 

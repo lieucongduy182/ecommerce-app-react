@@ -41,12 +41,10 @@ const Review: React.FC<{
         shipping: shippingInfo,
         payment: paymentInfo,
       };
-      console.log('🚀 [Debug] ~ Review.tsx:44 ~ handlePlaceOrder ~ order:', order)
-
       setOrderData(order);
 
-      clearCart();
       navigate("/confirmation");
+      clearCart();
     } catch (error) {
       console.error("Order failed:", error);
       alert("Order failed. Please try again.");

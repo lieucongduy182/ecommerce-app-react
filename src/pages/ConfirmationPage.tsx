@@ -1,14 +1,14 @@
-import { useNavigate } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
-import { CheckCircle } from 'lucide-react';
-import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { CheckCircle } from "lucide-react";
+import { useEffect } from "react";
 
 const ConfirmationPage: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { orderData } = useCart();
 
   useEffect(() => {
-    if (!orderData) navigate('/products');
+    if (!orderData) navigate("/products");
   }, [orderData, navigate]);
 
   if (!orderData) return null;
@@ -43,7 +43,7 @@ const ConfirmationPage: React.FC<{}> = () => {
         </p>
 
         <button
-          onClick={() => navigate('/products')}
+          onClick={() => navigate("/products")}
           className="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition"
         >
           Continue Shopping

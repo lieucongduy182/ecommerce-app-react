@@ -83,8 +83,6 @@ const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const clearCart = () => {
     setCart([]);
-    setOrderData(null);
-    localStorage.removeItem("orderData");
   };
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);

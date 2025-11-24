@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Package } from 'lucide-react';
 
-// Components
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('emilys');
   const [password, setPassword] = useState('emilyspass');

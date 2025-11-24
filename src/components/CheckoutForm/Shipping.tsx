@@ -104,6 +104,7 @@ const Shipping: React.FC<Props> = ({
           </label>
           <input
             type="email"
+            name="email"
             value={shippingInfo.email}
             onChange={handleShippingInfo}
             className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none ${
@@ -120,6 +121,7 @@ const Shipping: React.FC<Props> = ({
           </label>
           <input
             type="text"
+            name="postalCode"
             value={shippingInfo.postalCode}
             onChange={handleShippingInfo}
             className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none ${
@@ -136,6 +138,7 @@ const Shipping: React.FC<Props> = ({
           </label>
           <input
             type="text"
+            name="address"
             value={shippingInfo.address}
             onChange={handleShippingInfo}
             className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none ${
@@ -152,13 +155,9 @@ const Shipping: React.FC<Props> = ({
           </label>
           <input
             type="text"
+            name="detailedAddress"
             value={shippingInfo.detailedAddress}
-            onChange={(e) =>
-              setShippingInfo({
-                ...shippingInfo,
-                detailedAddress: e.target.value,
-              })
-            }
+            onChange={handleShippingInfo}
             placeholder="Apartment, suite, unit, etc."
             className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none ${
               errors.detailedAddress ? "border-red-500" : "border-gray-300"
@@ -175,6 +174,7 @@ const Shipping: React.FC<Props> = ({
             Delivery Notes (Optional)
           </label>
           <textarea
+            name="deliveryNotes"
             value={shippingInfo.deliveryNotes}
             onChange={handleShippingInfo}
             rows={3}
