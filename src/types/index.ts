@@ -42,12 +42,14 @@ export interface ShippingInfo {
   deliveryNotes: string;
 }
 
+type PaymentMethod = "credit_card" | "cash_on_delivery";
+
 export interface PaymentInfo {
-  paymentMethod: 'card' | 'paypal' | 'bank';
+  paymentMethod: PaymentMethod;
   cardNumber: string;
   expiryDate: string;
   cvv: string;
-  cardName: string
+  cardName: string;
 }
 
 export interface Order {

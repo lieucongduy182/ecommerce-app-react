@@ -55,7 +55,18 @@ const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem('user', JSON.stringify(userData));
   };
 
-  const updateUser = (updatedUser: User) => {
+  const updateUser = async (updatedUser: User) => {
+    await api.updateUser(updatedUser.id, {
+      ...updatedUser,
+      address: updatedUser.address
+        ? {
+            address: updatedUser.address.address,
+            city: updatedUser.address.city,
+            postalCode: updatedUser.address.postalCode,
+          }
+        : undefined,
+      phone: updatedUser.phone,
+    }, token!);
     setUser(updatedUser);
     localStorage.setItem('user', JSON.stringify(updatedUser));
   };
