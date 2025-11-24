@@ -2,6 +2,8 @@
 
 A full-featured e-commerce application built with React and TypeScript, utilizing the DummyJSON API for backend services. 
 
+Deployment production URL: `https://ecommerce-app-react-phi.vercel.app`
+
 ## Features
 
 - **User Authentication**: Login with JWT token management
@@ -96,3 +98,36 @@ ecommerce-app-react/
 Use these credentials to login:
 - **Username**: `emilys`
 - **Password**: `emilyspass`
+
+## Challenges and Considerations During Implementation
+
+### **Error Handling Architecture**
+**Challenge:**
+- Different error types require different UI/UX responses
+- Avoiding code duplication in error handling logic
+- Providing meaningful error messages to users
+**Considerations:**
+- Should build reusable ErrorAlert component with message clearly
+- Design Error state (network, auth, server, validation) improves UX
+
+### **State Management Without External Libraries**
+**Challenge:**
+- Managing global state (user, cart) across multiple pages
+- No Redux available in single-file artifact
+**Considerations:**
+- For larger apps: Consider React Query or React Toolkit
+- Re-renders optimization components
+
+### **Form Validation Strategy**
+**Challenge:**
+- Different validation rules for different field types
+- Maintaining validation state across multiple fields
+**Considerations:**
+- Clear error messages next to relevant fields
+- Should use `zod` to manage error state
+
+### **Authentication**
+**Challenge:**
+- Store token in localStorage
+**Considerations:**
+- Security: Token in memory prevents XSS attacks on localStorage
